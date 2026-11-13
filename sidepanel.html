@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <header>
+    <h1 class="brand"><img src="icons/continuous-sanity-mark-cropped-v1.png" alt="" />Continuous Sanity</h1>
+  </header>
+
+  <div id="sessionStatus" class="session-status">No active session</div>
+
+  <div id="joinControls" class="section">
+    <label>Invite code
+      <input id="inviteCode" placeholder="SANITY-7F2K" style="text-transform:uppercase;" />
+    </label>
+    <label>Your name
+      <input id="testerLabel" placeholder="Your name (required)" required />
+    </label>
+    <button id="joinSessionBtn">Join session</button>
+    <button id="leaveSessionBtn" class="secondary" style="display:none;">Leave session</button>
+  </div>
+
+  <div id="pickerSection" class="section" style="display:none;">
+    <button id="pickBtn">🎯 Mark something on the page</button>
+    <div id="armedBanner" class="armed-banner" style="display:none;">
+      Click anything on the page… <button id="cancelPickBtn" class="link">cancel</button>
+    </div>
+  </div>
+
+  <div id="composeSection" class="section compose" style="display:none;">
+    <div class="compose-title">What's going on here?</div>
+    <div id="composeScreenshotWrap" class="screenshot-wrap" style="display:none;">
+      <img id="composeScreenshot" class="compose-screenshot" />
+      <div id="composePin" class="pin"></div>
+    </div>
+    <div id="composeLabel" class="compose-label"></div>
+    <textarea id="composeComment" placeholder="Tell us what you expected, what confused you, or what happened..."></textarea>
+    <div id="intentButtons" class="intent-buttons"></div>
+    <div class="compose-actions">
+      <button id="composeCancel" class="secondary">Cancel</button>
+      <button id="composeSend">Send</button>
+    </div>
+  </div>
+
+  <div id="followupSection" class="section compose followup-compose" style="display:none;">
+    <div class="compose-title">One more thing</div>
+    <div id="followupQuestionText" class="followup-q"></div>
+    <input type="text" id="followupAnswerInput" placeholder="One short sentence…" />
+    <div class="compose-actions">
+      <button id="followupCancel" class="secondary">Later</button>
+      <button id="followupSend">Send</button>
+    </div>
+  </div>
+
+  <div id="feedSection" class="section">
+    <div class="section-title">This session</div>
+    <div id="feed" class="feed"><p class="empty">No observations yet.</p></div>
+  </div>
+
+  <details class="setup">
+    <summary>Setup</summary>
+    <label>Server URL <span class="hint">(set once — your team's Continuous Sanity deployment)</span>
+      <input id="apiBase" placeholder="http://localhost:4100/api" />
+    </label>
+    <button id="saveBtn">Save setup</button>
+  </details>
+
+  <button id="openDashboard" class="secondary full-width">Open full dashboard</button>
+
+  <p id="status"></p>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
