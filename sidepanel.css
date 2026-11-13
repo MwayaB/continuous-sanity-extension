@@ -1,0 +1,158 @@
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  color: #1a1a1a;
+  background: #fafafa;
+}
+body { padding: 14px; overflow-y: auto; }
+header { margin-bottom: 10px; }
+h1 { font-size: 15px; margin: 0; }
+.brand { display: flex; align-items: center; gap: 7px; }
+.brand img { width: 24px; height: 24px; object-fit: cover; border-radius: 6px; }
+
+.section { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #eee; }
+.section-title { font-size: 12px; font-weight: 600; color: #555; margin-bottom: 8px; }
+
+label {
+  display: block;
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 10px;
+}
+input, textarea {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 7px 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+textarea { min-height: 70px; resize: vertical; }
+
+button {
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+}
+button.full-width { width: 100%; margin-top: 4px; }
+button.secondary { background: #fff; color: #111; border: 1px solid #ddd; }
+button.danger { background: #fee2e2; color: #b91c1c; }
+button.link { background: none; color: #2563eb; padding: 0; font-size: 12px; text-decoration: underline; }
+
+.session-status {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #f0f0f0;
+  color: #555;
+  margin-bottom: 14px;
+}
+.session-status.active { background: #dcfce7; color: #166534; }
+
+#pickBtn { width: 100%; }
+.armed-banner {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.compose { background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 12px; }
+.compose-title { font-weight: 600; font-size: 13px; margin-bottom: 8px; }
+.screenshot-wrap { position: relative; margin-bottom: 8px; }
+.compose-screenshot { display: block; max-width: 100%; border-radius: 6px; border: 1px solid #eee; }
+.pin {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #dc2626;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #dc2626;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.compose-label { font-size: 11px; color: #888; margin-bottom: 8px; }
+.hint { font-weight: 400; color: #999; font-size: 10px; }
+.intent-buttons { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }
+.intent-buttons button {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  color: #111;
+  font-size: 12px;
+}
+.intent-buttons button.selected { background: #dbeafe; border-color: #93c5fd; }
+.compose-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+
+.feed { display: flex; flex-direction: column; gap: 8px; }
+.feed-item { border: 1px solid #eee; border-radius: 8px; padding: 8px; font-size: 12px; background: #fff; }
+.feed-item .screenshot-wrap { position: relative; margin-bottom: 6px; }
+.feed-item img { display: block; max-width: 100%; border-radius: 6px; }
+.feed-item .pin {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #dc2626;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #dc2626;
+  transform: translate(-50%, -50%);
+}
+.feed-item .tag {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 10px;
+  background: #f0f0f0;
+  margin-bottom: 4px;
+}
+.feed-item .tag.classifying { color: #aaa; font-style: italic; }
+.feed-item .tag.classification { background: #ede9fe; color: #5b21b6; }
+.feed-item .context { color: #999; font-size: 11px; margin-top: 4px; }
+
+.followup { margin-top: 8px; padding: 8px; border-radius: 6px; background: #f5f5f5; font-size: 11.5px; }
+.followup .followup-q { display: block; color: #888; font-style: italic; margin-bottom: 3px; }
+.followup .followup-a { display: block; color: #111; }
+
+/* Stateless — safe to regenerate on every feed poll. The actual text input
+   lives in #followupSection (see below), which is never touched by polling. */
+.followup-needed {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+}
+.followup-needed .followup-q { display: block; font-size: 12px; color: #92400e; margin-bottom: 8px; font-weight: 500; }
+.followup-needed .followup-actions { display: flex; justify-content: flex-end; gap: 10px; align-items: center; }
+.followup-needed .followup-answer-btn { padding: 6px 12px; font-size: 12px; background: #111; color: #fff; border: none; border-radius: 6px; }
+
+/* Stable panel — same pattern as #composeSection. Lives outside the polled
+   feed, so typing here never gets wiped out by a background refresh. */
+.followup-compose .followup-q { font-size: 12.5px; color: #92400e; margin-bottom: 8px; font-style: italic; }
+#followupAnswerInput { width: 100%; margin-bottom: 10px; }
+
+.empty { color: #999; font-size: 12px; }
+
+details.setup { margin: 4px 0 10px; }
+details.setup summary { cursor: pointer; font-size: 12px; color: #666; margin-bottom: 8px; }
+
+#status { font-size: 12px; color: #16a34a; min-height: 16px; margin: 6px 0 0; }
